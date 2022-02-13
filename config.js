@@ -46,6 +46,17 @@ const writeData = data => {
 
 }
 
+const readData = () => {
+
+    var data = fs.readFileSync('data.json');
+    var json = JSON.parse(data);
+
+    return json;
+
+
+}
+
 module.exports = {
-    writeData
+    writeData,
+    readData
 }

@@ -1,64 +1,26 @@
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const { processData } = require("./shops");
+const { readData } = require("./config");
 
+const port = process.env.PORT || 3000; 
 
-const { chromium } = require('playwright-chromium');
-const { writeData } = require('./config');
+app.use(cors());
 
-const shops = [
-    {
-        productId:'tv_59_rca',
-        vendor: 'Siman',
-        url: 'https://ni.siman.com/smart-tv-led-rca-59-103428711/p',
-        checkPrice: async ({ page }) => {
-          const price = await page.textContent('.vtex-flex-layout-0-x-flexRow--row-two-price');
-          return price;
-        }
-    },
+app.listen(port, () => {
+ console.log("El servidor está inicializado en el puerto 3000");
+ processData();
+});
 
-    // {
-    //     vendor: 'Siman',
-    //     url: 'https://ni.siman.com/smart-tv-led-rca-50-103428710/p',
-    //     checkPrice: async ({ page }) => {
-    //       const price = await page.textContent('.vtex-flex-layout-0-x-flexRow--row-two-price');
-    //       return price;
-    //     }
-    // },
-]
+app.get('/', function (req, res) {
+    res.send('Saludos desde express 4');
+});
 
-const getPrice = priceString => {
-    const priceSplit = priceString.split('USD');
+app.get('/data', function (req, res) {
 
-    const value = priceSplit[priceSplit.length - 1];
+    const data = readData();
 
-    return parseFloat(value.trim());
-}
+    res.send(data);
 
-const process = async () => {
-
-    const browser = await chromium.launch({ headless: true });
-  
-    for (const shop of shops) {
-      const { checkPrice, vendor, url, productId } = shop;
-  
-      const page = await browser.newPage();
-      await page.goto(url);
-  
-      const price = await checkPrice({ page }); 
-
-      const priceNumber = getPrice(price);
-  
-      //await page.screenshot({ path: `screenshots/${vendor}.png` });    
-      writeData({
-        productId,
-        price: priceNumber,
-        vendor,
-        created: new Date()
-      });
-
-      await page.close()
-    }
-  
-    await browser.close();
-    console.log('Done');
-  };
-
-  setInterval(process, 10000);
+});

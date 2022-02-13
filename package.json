@@ -1,24 +1,25 @@
 {
-  "name": "quiero_un_tv",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lexaguilar/quiero_un_tv.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lexaguilar/quiero_un_tv/issues"
-  },
-  "homepage": "https://github.com/lexaguilar/quiero_un_tv#readme",
-  "dependencies": {
-    "firebase": "^9.6.6",
-    "firebase-admin": "^10.0.2",
-    "playwright-chromium": "^1.19.0"
-  }
+    "name": "quiero_un_tv",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lexaguilar/quiero_un_tv.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lexaguilar/quiero_un_tv/issues"
+    },
+    "homepage": "https://github.com/lexaguilar/quiero_un_tv#readme",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "playwright-chromium": "^1.19.0"
+    }
 }
