@@ -9,14 +9,16 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 app.listen(port, () => {
+
  console.log("El servidor está inicializado en el puerto 3000");
  processData();
+ 
 });
 
 app.get('/', function (req, res) {
 
     res.send('Saludos desde express 4');
-    
+
 });
 
 app.get('/data', function (req, res) {
