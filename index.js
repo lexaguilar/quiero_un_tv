@@ -11,7 +11,7 @@ app.use(cors());
 app.listen(port, () => {
 
  console.log("El servidor está inicializado en el puerto 3000");
- //processData();
+ processData();
 
 });
 
